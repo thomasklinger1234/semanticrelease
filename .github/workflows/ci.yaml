@@ -50,6 +50,7 @@ jobs:
           HELM_LINT_OPTS=""
 
           for chart in ${HELM_CHARTS}; do
+            helm dependency update ${chart}
             helm dependency build ${chart}
             helm lint ${chart} ${HELM_LINT_OPTIONS}
             helm package ${chart} --dependency-update --destination .
