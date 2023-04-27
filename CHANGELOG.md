@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/thomasklinger1234/semanticrelease/compare/v1.2.0...v1.2.1) (2023-04-27)
+
+
+### Bug Fixes
+
+* release image after publishing and executing semantic release ([1692f3f](https://github.com/thomasklinger1234/semanticrelease/commit/1692f3ff9ee4b9b8c6edce22a9755e61bf3064fe))
+
 # [1.2.0](https://github.com/thomasklinger1234/semanticrelease/compare/v1.1.0...v1.2.0) (2023-04-27)
 
 
