@@ -50,3 +50,9 @@ jobs:
             -f Dockerfile \
             .
           docker tag onbuild:onbuild ghcr.io/${{ github.repository_owner }}/onbuild:${{ github.sha }}
+      - name: Container Structure Test
+        run: |
+          docker run \
+            --rm gcr.io/gcp-runtimes/container-structure-test:latest \
+            --name container-structure-test \
+            test --image onbuild:onbuild --config imagetest.yaml

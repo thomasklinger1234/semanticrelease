@@ -1,0 +1,16 @@
+schemaVersion: "2.0.0"
+
+commandTests:
+  - name: "bootstrap"
+    setup: []
+    command: "/opt/app/bootstrap"
+    args: ["--help"]
+
+fileExistenceTests:
+- name: 'entrypoint'
+  path: '/opt/app/bootstrap'
+  shouldExist: true
+
+metadataTest:
+  entrypoint: ["/opt/app/bootstrap"]
+  user: daemon
