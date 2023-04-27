@@ -46,7 +46,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Helm Lint
         run: |
-          HELM_CHARTS="$(find charts -depth 1)"
+          HELM_CHARTS="charts/default"
           HELM_LINT_OPTS=""
 
           for chart in ${HELM_CHARTS}; do
