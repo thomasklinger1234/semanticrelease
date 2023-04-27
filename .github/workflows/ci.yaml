@@ -1,0 +1,30 @@
+---
+name: ci
+
+on:
+  workflow_dispatch:
+  pull_request_target:
+    types: [ labeled, opened, synchronize, reopened, auto_merge_enabled ]
+  push:
+    branches:
+      - main
+    paths:
+      - "*/**"
+
+permissions:
+  issues: write
+  pull-requests: write
+  contents: read
+  security-events: write
+  actions: read
+  packages: write
+
+env: 
+  GIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+  
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    env: {}
+    steps:
+      - uses: actions/checkout@v3
