@@ -161,7 +161,9 @@ jobs:
           docker push ghcr.io/${{ github.repository_owner }}/onbuild:$(cat VERSION)
       - name: Perform Release
         if: github.ref == 'refs/heads/main'
-        run: npx semantic-release
+        run: |
+          npx semantic-release
+          rm -f VERSION
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: "shopentrance-bot"
