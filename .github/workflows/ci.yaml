@@ -40,6 +40,20 @@ jobs:
     env: {}
     steps:
       - uses: actions/checkout@v3
+      - uses: azure/setup-helm@v3
+        with:
+          version: v3.10.2
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Helm Lint
+        run: |
+          HELM_CHARTS="$(find charts -depth 1)"
+          HELM_LINT_OPTS=""
+
+          for chart in ${HELM_CHARTS}; do
+            helm dependency build ${chart}
+            helm lint ${chart} ${HELM_LINT_OPTIONS}
+            helm package ${chart} --dependency-update --destination .
+          done
       - uses: actions/setup-go@v3
         with:
           go-version-file: 'go.mod'

@@ -1,0 +1,18 @@
+---
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  name: ""
+
+imagePullSecrets: []
+image:
+  repository: ghcr.io/thomasklinger1234/onbuild
+  pullPolicy: IfNotPresent
+  tag: "v1.0.0"
+
+minio:
+  enabled: false
+  rootUser: minioadmin
+  rootPassword: minioadmin
