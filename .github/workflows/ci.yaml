@@ -108,7 +108,7 @@ jobs:
               [
                 "@semantic-release/exec",
                 {
-                  "prepareCmd": "echo \"${nextRelease.version}\" > VERSION; git add VERSION; mkdir -p release; cp VERSION release/VERSION"
+                  "prepareCmd": "echo \"\${nextRelease.version}\" > VERSION; git add VERSION; mkdir -p release; cp VERSION release/VERSION"
                 }
               ],
               [
@@ -136,3 +136,10 @@ jobs:
             @semantic-release/changelog \
             @semantic-release/exec \
             @semantic-release/git
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: "shopentrance-bot"
+          GIT_AUTHOR_EMAIL: "shozu+bots@otto.de"
+          GIT_COMMITTER_NAME: "shopentrance-bot"
+          GIT_COMMITTER_EMAIL: "shozu+bots@otto.de"
