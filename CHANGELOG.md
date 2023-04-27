@@ -1,3 +1,18 @@
+# [1.2.0](https://github.com/thomasklinger1234/semanticrelease/compare/v1.1.0...v1.2.0) (2023-04-27)
+
+
+### Bug Fixes
+
+* install helm repos first ([49360c4](https://github.com/thomasklinger1234/semanticrelease/commit/49360c438e29c36971b9f29b95074045a5782ae6))
+* suspend helm build actions due to missing repos ([3ac7ea2](https://github.com/thomasklinger1234/semanticrelease/commit/3ac7ea24e5667782f24ef0de3d68a3283d136ab4))
+* update helm repos first ([dd853a5](https://github.com/thomasklinger1234/semanticrelease/commit/dd853a5b12bb9f956daba23a714e95d4ba15421f))
+* use direct path to helm charts as find does not work ([e5a035b](https://github.com/thomasklinger1234/semanticrelease/commit/e5a035bed99d0017b354552968d62ce33d27de46))
+
+
+### Features
+
+* add helm chart ([9e078fb](https://github.com/thomasklinger1234/semanticrelease/commit/9e078fb035c14d13ca6091d3549aa6826950f0d6))
+
 # [1.1.0](https://github.com/thomasklinger1234/semanticrelease/compare/v1.0.0...v1.1.0) (2023-04-27)
 
 
