@@ -37,3 +37,16 @@ jobs:
           go mod verify
           go test ./...
           go vet ./...
+      - name: Docker Build
+        run: |
+          docker build \
+            --rm \
+            --label org.opencontainers.image.authors='TheAuthors <the.authors@acme.corp>' \
+            --label org.opencontainers.image.vendor='TheAuthors <the.authors@acme.corp>' \
+            --label org.opencontainers.image.version='${{ github.sha }}' \
+            --label org.opencontainers.image.revision='${{ github.sha }}' \
+            --label org.opencontainers.image.source='https://github.com/${{ github.repository }}' \
+            -t onbuild:onbuild \
+            -f Dockerfile \
+            .
+          docker tag onbuild:onbuild ghcr.io/${{ github.repository_owner }}/onbuild:${{ github.sha }}
