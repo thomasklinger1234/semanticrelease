@@ -87,17 +87,13 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
-  release:
-    runs-on: ubuntu-latest
-    env: {}
-    needs: [ ci ]
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+        if: github.ref == 'refs/heads/main'
         with:
           node-version: 18
-      - run: |
+      - name: Prepease Release
+        if: github.ref == 'refs/heads/main'
+        run: |
           cat << EOF > .releaserc.json 
           {
             "branches": ["main"],
@@ -136,7 +132,9 @@ jobs:
             @semantic-release/changelog \
             @semantic-release/exec \
             @semantic-release/git
-      - run: npx semantic-release
+      - name: Perform Release
+        if: github.ref == 'refs/heads/main'
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: "shopentrance-bot"
