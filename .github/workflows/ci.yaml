@@ -86,3 +86,53 @@ jobs:
         if: always()
         with:
           sarif_file: 'trivy-results.sarif'
+
+  release:
+    runs-on: ubuntu-latest
+    env: {}
+    needs: [ ci ]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: |
+          cat << EOF > .releaserc.json 
+          {
+            "branches": ["main"],
+            "plugins": [
+              "@semantic-release/commit-analyzer",
+              "@semantic-release/release-notes-generator",
+              "@semantic-release/changelog",
+              [
+                "@semantic-release/exec",
+                {
+                  "prepareCmd": "echo \"${nextRelease.version}\" > VERSION; git add VERSION; mkdir -p release; cp VERSION release/VERSION"
+                }
+              ],
+              [
+                "@semantic-release/git",
+                {
+                  "assets": [
+                    "CHANGELOG.md"
+                  ]
+                }
+              ],
+              [
+                "@semantic-release/github",
+                {
+                  "assets": [
+                    { "path": "release/**", "label": "Release Artifacts" }
+                  ]
+                }
+              ]
+            ]
+          }
+          EOF
+
+          npm install -g \
+            semantic-release \
+            @semantic-release/changelog \
+            @semantic-release/exec \
+            @semantic-release/git
