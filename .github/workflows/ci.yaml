@@ -30,7 +30,11 @@ jobs:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
       - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v2
+        uses: actions/dependency-review-action@v3
+        with:
+          comment-summary-in-pr: "true"
+          fail-on-severity: low
+
   ci:
     runs-on: ubuntu-latest
     env: {}
