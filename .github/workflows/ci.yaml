@@ -119,7 +119,7 @@ jobs:
               [
                 "@semantic-release/exec",
                 {
-                  "prepareCmd": "echo \"\${nextRelease.version}\" > VERSION; git add VERSION; mkdir -p release; cp VERSION release/VERSION"
+                  "prepareCmd": "echo \"\${nextRelease.version}\" > VERSION; mkdir -p release; cp VERSION release/VERSION"
                 }
               ],
               [
@@ -163,7 +163,6 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           npx semantic-release
-          rm -f VERSION
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: "shopentrance-bot"
