@@ -59,3 +59,13 @@ jobs:
             -v /var/run/docker.sock:/var/run/docker.sock \
             -t gcr.io/gcp-runtimes/container-structure-test:latest \
               test --image onbuild:onbuild --config /imagetest.yaml
+      - name: Container Scan via Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'onbuild:onbuild'
+          format: 'sarif'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+          output: 'trivy-results.sarif
