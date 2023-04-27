@@ -23,6 +23,13 @@ env:
   GIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
   
 jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v2
   ci:
     runs-on: ubuntu-latest
     env: {}
