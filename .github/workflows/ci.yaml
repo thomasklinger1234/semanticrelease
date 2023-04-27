@@ -61,7 +61,6 @@ jobs:
             -t onbuild:onbuild \
             -f Dockerfile \
             .
-          docker tag onbuild:onbuild ghcr.io/${{ github.repository_owner }}/onbuild:${{ github.sha }}
       - name: Container Structure Test
         run: |
           docker run \
@@ -132,6 +131,18 @@ jobs:
             @semantic-release/changelog \
             @semantic-release/exec \
             @semantic-release/git
+      - name: Log in to the Container registry (GHCR)
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        if: github.ref == 'refs/heads/main'
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push Image to Container Registry (GHCR)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker tag onbuild:onbuild ghcr.io/${{ github.repository_owner }}/onbuild:$(cat VERSION)
+          docker push ghcr.io/${{ github.repository_owner }}/onbuild:$(cat VERSION)
       - name: Perform Release
         if: github.ref == 'refs/heads/main'
         run: npx semantic-release
