@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/thomasklinger1234/semanticrelease/compare/v1.0.0...v1.1.0) (2023-04-27)
+
+
+### Features
+
+* push image to ghcr ([8ed33df](https://github.com/thomasklinger1234/semanticrelease/commit/8ed33df8fac4b46c0bf12fdda496d8c2190437dc))
+
 # 1.0.0 (2023-04-27)
 
 
