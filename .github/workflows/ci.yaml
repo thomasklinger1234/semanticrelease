@@ -57,5 +57,5 @@ jobs:
             --name container-structure-test \
             -v $(pwd)/imagetest.yaml:/imagetest.yaml \
             -v /var/run/docker.sock:/var/run/docker.sock \
-            -it gcr.io/gcp-runtimes/container-structure-test:latest \
+            -t gcr.io/gcp-runtimes/container-structure-test:latest \
               test --image onbuild:onbuild --config /imagetest.yaml
