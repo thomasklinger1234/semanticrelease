@@ -134,7 +134,7 @@ jobs:
                 "@semantic-release/github",
                 {
                   "assets": [
-                    { "path": "charts/default/**", "label": "Helm Chart" }
+
                   ]
                 }
               ]
