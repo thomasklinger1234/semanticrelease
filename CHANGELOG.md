@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/thomasklinger1234/semanticrelease/compare/v1.2.1...v1.2.2) (2023-04-28)
+
+
+### Bug Fixes
+
+* upload whole chart folder ([f105ff2](https://github.com/thomasklinger1234/semanticrelease/commit/f105ff289d82ba8632177439344b0f3f248be93d))
+
 ## [1.2.1](https://github.com/thomasklinger1234/semanticrelease/compare/v1.2.0...v1.2.1) (2023-04-27)
 
 
