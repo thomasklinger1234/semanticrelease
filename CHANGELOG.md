@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/thomasklinger1234/semanticrelease/compare/v1.3.1...v1.3.2) (2023-04-28)
+
+
+### Bug Fixes
+
+* remove chart releaser ([d0411ab](https://github.com/thomasklinger1234/semanticrelease/commit/d0411ab049c3592b49807f5b140acbefb22ed887))
+
 ## [1.3.1](https://github.com/thomasklinger1234/semanticrelease/compare/v1.3.0...v1.3.1) (2023-04-28)
 
 
