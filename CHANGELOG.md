@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/thomasklinger1234/semanticrelease/compare/v1.3.0...v1.3.1) (2023-04-28)
+
+
+### Bug Fixes
+
+* install helm repos automatically ([b1df453](https://github.com/thomasklinger1234/semanticrelease/commit/b1df453d98736bdf77701fcd9c9a7dadf0dd446a))
+
 # [1.3.0](https://github.com/thomasklinger1234/semanticrelease/compare/v1.2.3...v1.3.0) (2023-04-28)
 
 
