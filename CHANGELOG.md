@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/thomasklinger1234/semanticrelease/compare/v1.2.3...v1.3.0) (2023-04-28)
+
+
+### Features
+
+* release helm charts ([eee5d64](https://github.com/thomasklinger1234/semanticrelease/commit/eee5d6407795280ac429fdb091b4eca37f1c2105))
+
 ## [1.2.3](https://github.com/thomasklinger1234/semanticrelease/compare/v1.2.2...v1.2.3) (2023-04-28)
 
 
