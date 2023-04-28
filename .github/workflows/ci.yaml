@@ -114,9 +114,27 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           node-version: 18
+      - name: Log in to the Container registry (GHCR)
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        if: github.ref == 'refs/heads/main'
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Prepease Release
         if: github.ref == 'refs/heads/main'
         run: |
+          cat << EOF > release.sh 
+          #!/usr/bin/env bash
+
+          set -eo pipefail
+
+          SEMVER=\${1:-dev}
+
+          docker tag onbuild:onbuild ghcr.io/${{ github.repository_owner }}/onbuild:\$SEMVER
+          docker push ghcr.io/${{ github.repository_owner }}/onbuild:\$SEMVER
+          EOF
+
           cat << EOF > .releaserc.json 
           {
             "branches": ["main"],
@@ -127,7 +145,7 @@ jobs:
               [
                 "@semantic-release/exec",
                 {
-                  "prepareCmd": "echo \"\${nextRelease.version}\" > VERSION"
+                  "prepareCmd": "bash release.sh"
                 }
               ],
               [
@@ -165,18 +183,10 @@ jobs:
           GIT_AUTHOR_EMAIL: "shozu+bots@otto.de"
           GIT_COMMITTER_NAME: "shopentrance-bot"
           GIT_COMMITTER_EMAIL: "shozu+bots@otto.de"
-      - name: Log in to the Container registry (GHCR)
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-        if: github.ref == 'refs/heads/main'
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Push Image to Container Registry (GHCR)
         if: github.ref == 'refs/heads/main'
         run: |
-          docker tag onbuild:onbuild ghcr.io/${{ github.repository_owner }}/onbuild:$(cat VERSION)
-          docker push ghcr.io/${{ github.repository_owner }}/onbuild:$(cat VERSION)
+          echo "deprecated"
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
         if: github.ref == 'refs/heads/main'
