@@ -64,7 +64,7 @@ jobs:
             helm lint ${chart} ${HELM_LINT_OPTIONS}
             # helm package ${chart} --dependency-update --destination .
           done
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v4
         with:
           go-version-file: 'go.mod'
       - name: Go
