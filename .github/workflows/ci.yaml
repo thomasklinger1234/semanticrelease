@@ -177,3 +177,8 @@ jobs:
         run: |
           docker tag onbuild:onbuild ghcr.io/${{ github.repository_owner }}/onbuild:$(cat VERSION)
           docker push ghcr.io/${{ github.repository_owner }}/onbuild:$(cat VERSION)
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.5.0
+        if: github.ref == 'refs/heads/main'
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
