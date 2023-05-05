@@ -11,7 +11,7 @@ RUN go mod verify
 
 COPY . .
 
-RUN go build -o bootstrap main.go
+RUN go build -o bootstrap cmd/main.go
 
 FROM alpine:3.17
 
