@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/thomasklinger1234/semanticrelease/compare/v1.3.2...v1.4.0) (2023-05-05)
+
+
+### Features
+
+* add http server ([967a167](https://github.com/thomasklinger1234/semanticrelease/commit/967a1674a71b08b9bae65a635bb68b5023fd4cc0))
+
 ## [1.3.2](https://github.com/thomasklinger1234/semanticrelease/compare/v1.3.1...v1.3.2) (2023-04-28)
 
 
